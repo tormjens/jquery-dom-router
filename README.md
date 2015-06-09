@@ -2,7 +2,7 @@
 
 ### DOM-based Routing
 
-A conventient way to fire JavaScripts based on the classes the `<body>`-tag has on page load. It is heavily based on the routing provided in the Sage WordPress-theme, but has a cleaner syntax and does not feel as cluttered. Their docs of the function state:
+A conventient way to fire JavaScripts based on the classes the `<body>`-tag has on page load or whenever a new class is added to it. It is heavily based on the routing provided in the Sage WordPress-theme, but has a cleaner syntax and does not feel as cluttered. Their docs of the function state:
 
 ```
 /* ========================================================================

@@ -1,6 +1,6 @@
 {
 	"name": "jquery-dom-router",
-	"version": "3.5.0",
+	"version": "1.0",
 	"homepage": "http://github.com/tormjens/jquery-dom-router",
 	"authors": [
 		"Tor Morten Jensen <tormorten@tormorten.no>"
@@ -9,10 +9,9 @@
 	"main": "src/jquery.boilerplate.js",
 	"keywords": [
 		"jquery",
-		"plugin",
-		"boilerplate",
-		"jquery-plugin",
-		"jquery-boilerplate"
+		"dom",
+		"router",
+		"dom-router"
 	],
 	"license": "MIT"
 }
