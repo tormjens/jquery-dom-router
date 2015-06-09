@@ -62,7 +62,7 @@
 		            	var classes = newClasses.replace(/-/g, '_').split(/\s+/);
 
 		            	$.each(classes, function(i, className) {
-		            		if(!base.routeExecuted(className, base_classes)) {
+		            		if(!base.routeExecuted(className)) {
 		            			base.fire(className);
 		            		}
 		            	});
@@ -94,6 +94,7 @@
 	        		base.fire('common');
 	        		$.each(base.classes(), function(i, className) {
 	        			base.fire(className);
+            			base.executed.push(className);
 	        		});
 	        	};
 
@@ -113,7 +114,6 @@
 
       				if(fire) {
 	      				routes[func](args);
-            			base.executed.push(className);
 	      			}
 	        	};
 		        
