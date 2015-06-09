@@ -10,6 +10,11 @@
 
     if(!$.fn.watch && !$.fn.unwatch) {
     	
+    	/**
+    	 * Watches an element for a change in a property
+    	 * @param  {string}   id The property to watch
+    	 * @param  {Function} fn The function to execute when something has changed
+    	 */
 	    $.fn.watch = function( id, fn ) {
 	 
 		    return this.each(function(){
@@ -29,7 +34,10 @@
 		 
 		    });
 		};
-		 
+
+		/**
+		 * Unwatches an element
+		 */
 		$.fn.unwatch = function() {
 		 
 		    return this.each(function(){
@@ -48,31 +56,48 @@
 		        base.el = el;
 		        base.$el.data( 'DOMRouter.router' , base );
 
+		        /**
+		         * Initalize the functions
+		         * @return {void}
+		         */
 		        base.init = function () {
 		            base.routes = routes;
 		            $(document).ready(base.load);
 
-		            var base_classes = base.classes();
+		            base.executed = [];
 
 		            $(document).find('body').watch('className', function(property, oldClasses, newClasses) {
 		            	var classes = newClasses.replace(/-/g, '_').split(/\s+/);
 
 		            	$.each(classes, function(i, className) {
-		            		if(!base.routeExists(className, base_classes)) {
+		            		if(!base.routeExecuted(className, base_classes)) {
 		            			base.fire(className);
 		            		}
 		            	});
 		            });
 		        };
 
-		        base.routeExists = function(route, base_classes) {
-		        	return base_classes.indexOf(route) > -1;
+		        /**
+		         * Checks if a route has been executed already
+		         * @param  {string} 	route        [description]
+		         * @return {boolean}	
+		         */
+		        base.routeExecuted = function(route) {
+		        	return base.executed.indexOf(route) > -1;
 		        };
 
+		        /**	
+		         * Gets the classes on the body element
+		         * @return {array}
+		         */
 		        base.classes = function() {
 		        	return document.body.className.replace(/-/g, '_').split(/\s+/);
 		        };
 
+		        /**
+		         * Load all events to be fired
+		         * @return {void}
+		         */
 	        	base.load = function() {
 	        		base.fire('common');
 	        		$.each(base.classes(), function(i, className) {
@@ -80,6 +105,12 @@
 	        		});
 	        	};
 
+	        	/**
+	        	 * Fire an event
+	        	 * @param  {Function} func The function to be fired
+	        	 * @param  {Array} args Arguments
+	        	 * @return {Void}
+	        	 */
 	        	base.fire = function(func, args) {
 	        		var fire,
 	        			routes = base.routes;
@@ -90,6 +121,7 @@
 
       				if(fire) {
 	      				routes[func](args);
+            			base.executed.push(className);
 	      			}
 	        	};
 		        
