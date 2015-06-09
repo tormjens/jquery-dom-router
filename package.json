@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "Fire JavaScript based on body classes. Based off the DOM router in the Sage WordPress Theme.",
   "keywords": [
-    "jquery-plugin",
     "jquery",
-    "boilerplate",
-    "plugins"
+    "dom",
+    "router",
+    "dom-router"
   ],
   "repository": {
     "type": "git",
