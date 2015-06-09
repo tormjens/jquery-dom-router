@@ -1,12 +1,45 @@
 /*
  *  jquery-dom-router - v1.0.0
- *  Fire JavaScript based on body classes.
+ *  Fire JavaScript based on body classes. Based off the DOM router in the Sage WordPress Theme.
  *  http://jqueryboilerplate.com
  *
- *  Made by Zeno Rocha
+ *  Made by Tor Morten Jensen
  *  Under MIT License
  */
 ;(function ( $ ) {
+
+    if(!$.fn.watch && !$.fn.unwatch) {
+    	
+	    $.fn.watch = function( id, fn ) {
+	 
+		    return this.each(function(){
+		 
+		        var self = this;
+		 
+		        var oldVal = self[id];
+		        $(self).data(
+		            'watch_timer',
+		            setInterval(function(){
+		                if (self[id] !== oldVal) {
+		                    fn.call(self, id, oldVal, self[id]);
+		                    oldVal = self[id];
+		                }
+		            }, 100)
+		        );
+		 
+		    });
+		};
+		 
+		$.fn.unwatch = function() {
+		 
+		    return this.each(function(){
+		        clearInterval( $(this).data('watch_timer') );
+		    });
+		 
+		};
+
+	}
+
     if (!$.DOMRouter) {
         $.DOMRouter = {
         	router: function(el, routes) {
@@ -18,6 +51,22 @@
 		        base.init = function () {
 		            base.routes = routes;
 		            $(document).ready(base.load);
+
+		            var base_classes = base.classes();
+
+		            $(document).find('body').watch('className', function(property, oldClasses, newClasses) {
+		            	var classes = newClasses.replace(/-/g, '_').split(/\s+/);
+
+		            	$.each(classes, function(i, className) {
+		            		if(!base.routeExists(className, base_classes)) {
+		            			base.fire(className);
+		            		}
+		            	});
+		            });
+		        };
+
+		        base.routeExists = function(route, base_classes) {
+		        	return base_classes.indexOf(route) > -1;
 		        };
 
 		        base.classes = function() {
