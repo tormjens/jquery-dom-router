@@ -2,7 +2,7 @@
 
 ### DOM-based Routing
 
-A conventient way to fire JavaScripts based on the classes the `<body>`-tag has. It is heavily based on the routing provided in the Sage WordPress-theme (their docs of the function says):
+A conventient way to fire JavaScripts based on the classes the `<body>`-tag has on page load. It is heavily based on the routing provided in the Sage WordPress-theme, but has a cleaner syntax and does not feel as cluttered. Their docs of the function state:
 
 ```
 /* ========================================================================
@@ -24,6 +24,7 @@ A conventient way to fire JavaScripts based on the classes the `<body>`-tag has.
 
 ## Usage
 
+
 1. Include jQuery:
 
 	```html
@@ -36,7 +37,7 @@ A conventient way to fire JavaScripts based on the classes the `<body>`-tag has.
 	<script src="dist/jquery.dom-router.min.js"></script>
 	```
 
-3. Call the plugin:
+3. Call the plugin. Simply use the name of the class to fire on as the name of a property in an object passed to the plugin. To have some JS loaded on all pages use the "common"-property. Class names with dashes are converted to underscores by the plugin, so if you have a class called `big-cakes-for-you` you would use `big_cakes_for_you` as the property name. 
 
 	```javascript
 	$(document).router({
