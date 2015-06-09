@@ -6,13 +6,23 @@
 		<script src="../src/jquery.dom-router.js"></script>
 	</head>
 	<body class="spoons">
+		<button id="add-class">Add class</button>
 		<script>
 			$(document).router({
 				common: function() {
 					// Do some JS for all pages here
+					console.log('test');
+					var i = 0;
+					$('#add-class').click(function() {
+						$('body').addClass('test-'+ i);
+						i++;
+					})
 				},
-				spoons: function() {
+				spoon: function() {
 					// Do some JS for pages where the body has a class name of "spoons"
+				},
+				test_3: function() {
+					alert('Test 3 fired');
 				}
 			});
 		</script>
