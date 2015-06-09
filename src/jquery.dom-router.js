@@ -64,6 +64,7 @@
 		            	$.each(classes, function(i, className) {
 		            		if(!base.routeExecuted(className)) {
 		            			base.fire(className);
+            					base.executed.push(className);
 		            		}
 		            	});
 		            });
