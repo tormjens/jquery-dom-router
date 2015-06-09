@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>jQuery DOM Router</title>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+		<script src="../src/jquery.dom-router.js"></script>
+	</head>
+	<body class="spoons">
+		<script>
+			$(document).router({
+				common: function() {
+					// Do some JS for all pages here
+				},
+				spoons: function() {
+					// Do some JS for pages where the body has a class name of "spoons"
+				}
+			});
+		</script>
+	</body>
+</html>
