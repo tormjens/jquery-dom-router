@@ -1,6 +1,6 @@
 {
 	"name": "jquery-dom-router",
-	"version": "1.0",
+	"version": "1.0.0",
 	"homepage": "http://github.com/tormjens/jquery-dom-router",
 	"authors": [
 		"Tor Morten Jensen <tormorten@tormorten.no>"
