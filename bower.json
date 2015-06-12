@@ -6,7 +6,7 @@
 		"Tor Morten Jensen <tormorten@tormorten.no>"
 	],
 	"description": "Fire JavaScript based on body classes. Based off the DOM router in the Sage WordPress Theme.",
-	"main": "src/jquery.boilerplate.js",
+	"main": "src/jquery.dom-router.js",
 	"keywords": [
 		"jquery",
 		"dom",
