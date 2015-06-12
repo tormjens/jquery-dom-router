@@ -56,6 +56,10 @@
 		        base.el = el;
 		        base.$el.data( 'DOMRouter.router' , base );
 
+		        base.element = base.$el.find($.DOMRouter.defaults.element);
+
+		        base.element.addClass('dom-router-ready');
+
 		        /**
 		         * Initalize the functions
 		         * @return {void}
@@ -66,7 +70,7 @@
 
 		            base.executed = [];
 
-		            $(document).find('body').watch('className', function(property, oldClasses, newClasses) {
+		            base.element.watch('className', function(property, oldClasses, newClasses) {
 		            	var classes = newClasses.replace(/-/g, '_').split(/\s+/);
 
 		            	$.each(classes, function(i, className) {
@@ -92,7 +96,7 @@
 		         * @return {array}
 		         */
 		        base.classes = function() {
-		        	return document.body.className.replace(/-/g, '_').split(/\s+/);
+		        	return base.element.get(0).className.replace(/-/g, '_').split(/\s+/);
 		        };
 
 		        /**
@@ -129,6 +133,9 @@
 		        // Run initializer
 		        base.init();
 
+        	},
+        	defaults: {
+        		element: 'body'
         	}
         };
     }

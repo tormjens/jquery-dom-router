@@ -50,6 +50,8 @@
 
 		        base.element = base.$el.find($.DOMRouter.defaults.element);
 
+		        base.element.addClass('dom-router-ready');
+
 		        /**
 		         * Initalize the functions
 		         * @return {void}
@@ -86,7 +88,6 @@
 		         * @return {array}
 		         */
 		        base.classes = function() {
-		        	console.log(base.element);
 		        	return base.element.get(0).className.replace(/-/g, '_').split(/\s+/);
 		        };
 
