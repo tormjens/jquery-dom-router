@@ -1,5 +1,5 @@
 /*
- *  jquery-dom-router - v1.0.0
+ *  jquery-dom-router - v1.0.1
  *  Fire JavaScript based on body classes. Based off the DOM router in the Sage WordPress Theme.
  *  http://jqueryboilerplate.com
  *
@@ -9,18 +9,18 @@
 ;(function ( $ ) {
 
     if(!$.fn.watch && !$.fn.unwatch) {
-    	
+
     	/**
     	 * Watches an element for a change in a property
     	 * @param  {string}   id The property to watch
     	 * @param  {Function} fn The function to execute when something has changed
     	 */
 	    $.fn.watch = function( id, fn ) {
-	 
+
 		    return this.each(function(){
-		 
+
 		        var self = this;
-		 
+
 		        var oldVal = self[id];
 		        $(self).data(
 		            'watch_timer',
@@ -31,7 +31,7 @@
 		                }
 		            }, 100)
 		        );
-		 
+
 		    });
 		};
 
@@ -39,11 +39,11 @@
 		 * Unwatches an element
 		 */
 		$.fn.unwatch = function() {
-		 
+
 		    return this.each(function(){
 		        clearInterval( $(this).data('watch_timer') );
 		    });
-		 
+
 		};
 
 	}
@@ -85,13 +85,13 @@
 		        /**
 		         * Checks if a route has been executed already
 		         * @param  {string} 	route        [description]
-		         * @return {boolean}	
+		         * @return {boolean}
 		         */
 		        base.routeExecuted = function(route) {
 		        	return base.executed.indexOf(route) > -1;
 		        };
 
-		        /**	
+		        /**
 		         * Gets the classes on the body element
 		         * @return {array}
 		         */
@@ -129,7 +129,7 @@
 	      				routes[func](args);
 	      			}
 	        	};
-		        
+
 		        // Run initializer
 		        base.init();
 
@@ -145,5 +145,9 @@
             (new $.DOMRouter.router(this, routes));
         });
     };
+
+    if(typeof module !== 'undefined' && module.exports) {
+		module.exports = $.DOMRouter.router;
+	}
 
 })( jQuery );

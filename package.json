@@ -1,6 +1,6 @@
 {
   "name": "jquery-dom-router",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Fire JavaScript based on body classes. Based off the DOM router in the Sage WordPress Theme.",
   "keywords": [
     "jquery",
